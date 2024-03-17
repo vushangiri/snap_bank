@@ -8,47 +8,46 @@
     <title>Snap Bank</title>
 </head>
 <body>
-    <div class="container py-3">
-        <div class="panel">
-            <div class="row justify-content-center">
-                <div class="col-lg-7">
-                    <h1 class="title text-center">
-                        Welcome to Snap bank
-                    </h1>
-                    
-                    <div class="text-right">
-                        <p>upload your <b>Images</b> here.</p>
-                    </div>
-                    <div class="wrapper">
-                        <div id='uploadFiles' class="file-upload">
-                            <span id="uploadId"> Upload </span>
-                            <i class="fa fa-arrow-up"></i>
+    <form action="/upload_images" method="POST" enctype="multipart/form-data">
+        <div class="container py-3">
+            <div class="panel">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <h1 class="title text-center">
+                            Welcome to Snap bank
+                        </h1>
+                        
+                        <div class="text-right">
+                            <p>upload your <b>Images</b> here.</p>
                         </div>
-                        <div class="clearAllSelection">
-                            <span id="clearAll">Clear All </span>
-                            <i class="fa fa-times clearAllITag"></i>
+                        <div class="wrapper">
+                            <button type="submit" id="uploadId" class="file-upload"> Upload <i class="fa fa-arrow-up"></i></button>
+                            <div class="clearAllSelection">
+                                <span id="clearAll">Clear All </span>
+                                <i class="fa fa-times clearAllITag"></i>
 
+                            </div>
                         </div>
+                        
                     </div>
-                      
                 </div>
-            </div>
-            <br>
-            <br>
-            <div class="custom-file-image">
-                <input type="file" id="fileImage" name="fileImage"
-                         class="custom-file-image-input"
-                         accept="image/*"
-                         multiple="multiple">
-                <div class="custom-file-preview">
-                    <label class="custom-file-preview-add" for="fileImage">
-                        <i class="fas fa-plus"></i>
-                    </label>
+                <br>
+                <br>
+                <div class="custom-file-image">
+                    <input type="file" id="fileImage" name="fileImage"
+                            class="custom-file-image-input"
+                            accept="image/*"
+                            multiple="multiple">
+                    <div class="custom-file-preview">
+                        <label class="custom-file-preview-add" for="fileImage">
+                            <i class="fas fa-plus"></i>
+                        </label>
+                    </div>
                 </div>
+                <p class="text-danger error-product_image"></p>
             </div>
-            <p class="text-danger error-product_image"></p>
         </div>
-    </div>
+    </form>
     
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
