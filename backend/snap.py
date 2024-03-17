@@ -2,13 +2,25 @@ import base64
 import os
 import cv2
 import numpy as np
-from flask import Flask, render_template, send_from_directory
+from flask import Flask, render_template, send_from_directory, request, redirect
+from werkzeug.utils import secure_filename
 from flask_socketio import SocketIO, emit
 import face_recognition
 import numpy as np
 
 app = Flask(__name__, template_folder="../frontend/templates", static_folder="../frontend/static")
 app.config["SECRET_KEY"] = "secret!"
+
+# configure upload folder
+UPLOAD_FOLDER = '../frontend/static/images'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# check if file type is in allowed list
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 # app.add_url_rule('/frontend/static/<path:filename>', endpoint='fstatic',
 #                  view_func=app.send_static_file)
 socketio = SocketIO(app)
@@ -104,6 +116,27 @@ def face():
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/upload_images", methods=['GET', 'POST'])
+def upload_images():
+    if request.method == 'POST':
+        print('files', request.files)
+        if 'fileImage' not in request.files:
+            print('No file part')
+            return redirect('/')
+        files = request.files.getlist('fileImage')
+        
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        for file in files:
+            if file.filename == '':
+                print('No selected file')
+                return redirect('/')
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                print('file upload successful')
+        return redirect('/')
 
 
 if __name__ == "__main__":

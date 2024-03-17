@@ -52,9 +52,18 @@ function CustomUpload(element) {
 const upload = new CustomUpload('#fileImage');
 
 
-document.getElementById("uploadFiles").addEventListener('click', () => {
-    console.log("uploadFiles", uploadFiles)
-})
+// document.getElementById("uploadFiles").addEventListener('click', () => {
+//     console.log("uploadFiles", document.getElementById('fileImage').files)
+//     let uploadedFile = document.getElementById('fileImage').files;
+//     var form_data = new FormData();
+//     form_data.append("file", uploadedFile);
+//     console.log(form_data)
+//     $.ajax({
+//         url: "http://localhost:5000/upload_images",
+//         method: "POST",
+//         data: form_data,
+//     });
+// })
 
 document.getElementById("clearAll").addEventListener('click', () => {
     location.reload();
