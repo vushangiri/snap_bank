@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fstyles.css') }}">
+    <title>Flask Client Camera Web App</title>
+
+    <style>
+    #video {
+      transform: rotateY(180deg);
+      -webkit-transform:rorateY(180deg);
+      -moz-transform:rorateY(180deg);
+    }
+    .video img{
+      object-fit: contain;
+      overflow: clip;
+      overflow-clip-margin: content-box;
+    }
+    
+    </style>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
+  </head>
+  <body>
+    <div id="container">
+      <video autoplay playsinline id="videoElement" ></video>
+      <canvas id="canvas" width="400" height="300"></canvas>
+    </div>
+
+    <div class="video">
+      <img id="photo" width="400" height="300">
+    </div>
+    <h1 id="userName">Unknown</h1>
+
+    <script src="{{ url_for('static', filename='fscript.js') }}"></script>
+  </body>
+</html>
