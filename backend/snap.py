@@ -2,7 +2,7 @@ import base64
 import os
 import cv2
 import numpy as np
-from flask import Flask, render_template, send_from_directory, request, redirect
+from flask import Flask, render_template, send_from_directory, request, redirect, flash
 from werkzeug.utils import secure_filename
 from flask_socketio import SocketIO, emit
 import face_recognition
@@ -113,6 +113,10 @@ def receive_image(image):
 def face():
     return render_template("face.html")
 
+@app.route("/upload")
+def upload():
+    return render_template("upload.html")
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -123,7 +127,8 @@ def upload_images():
         print('files', request.files)
         if 'fileImage' not in request.files:
             print('No file part')
-            return redirect('/')
+            flash('No file part')
+            return redirect('/upload')
         files = request.files.getlist('fileImage')
         
         # If the user does not select a file, the browser submits an
@@ -131,11 +136,13 @@ def upload_images():
         for file in files:
             if file.filename == '':
                 print('No selected file')
-                return redirect('/')
+                flash('No files selected. Please select an image file.')
+                return redirect('/upload')
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 print('file upload successful')
+        flash('Files successfully uploaded')
         return redirect('/')
 
 
