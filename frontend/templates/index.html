@@ -8,48 +8,40 @@
     <title>Snap Bank</title>
 </head>
 <body>
-    <form action="/upload_images" method="POST" enctype="multipart/form-data">
-        <div class="container py-3">
-            <div class="panel">
-                <div class="row justify-content-center">
-                    <div class="col-lg-7">
-                        <h1 class="title text-center">
-                            Welcome to Snap bank
-                        </h1>
-                        
-                        <div class="text-right">
-                            <p>upload your <b>Images</b> here.</p>
-                        </div>
-                        <div class="wrapper">
-                            <button type="submit" id="uploadId" class="file-upload"> Upload <i class="fa fa-arrow-up"></i></button>
-                            <div class="clearAllSelection">
-                                <span id="clearAll">Clear All </span>
-                                <i class="fa fa-times clearAllITag"></i>
+    <div class="container py-3">
+        <div class="panel">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <h1 class="title text-center">
+                        Welcome to Snap bank
+                    </h1>
+                    
+                    <div class="text-right">
+                        <p>Press retrieve fetch images or press Upload to add images</p>
+                    </div>
 
-                            </div>
-                        </div>
+                    <br>
+                    <br>
+                    <div class="wrapper">
+                        <button type="submit" id="retrieveImages" class="file-retrieve"> Retrieve &nbsp;&nbsp;<i class="fa fa-arrow-down"></i></button>
+                        <button type="submit" id="uploadImages" class="file-upload"> Upload &nbsp;&nbsp;<i class="fa fa-arrow-up"></i></button>
                         
                     </div>
+                    
                 </div>
-                <br>
-                <br>
-                <div class="custom-file-image">
-                    <input type="file" id="fileImage" name="fileImage"
-                            class="custom-file-image-input"
-                            accept="image/*"
-                            multiple="multiple">
-                    <div class="custom-file-preview">
-                        <label class="custom-file-preview-add" for="fileImage">
-                            <i class="fas fa-plus"></i>
-                        </label>
-                    </div>
-                </div>
-                <p class="text-danger error-product_image"></p>
             </div>
+            <br>
+            
+            
         </div>
-    </form>
-    
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <script>alert(`{{message}}`)</script>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
