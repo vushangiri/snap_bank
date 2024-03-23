@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Retrieve Images</title>
+</head>
+<body>
+    <div class="container py-3">
+        <div class="panel">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <h1 class="title text-center">
+                        Welcome to Snap bank
+                    </h1>
+                    
+                    <div class="text-right">
+                        <p>Press button below to scan your face and retrieve all related images.</p>
+                    </div>
+
+                    <br>
+                    <br>
+                    <div class="wrapper">
+                        <button type="submit" id="retrieveImages" class="file-retrieve"> Scan &nbsp;&nbsp;<i class="fa-solid fa-expand"></i></button>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            <br>
+            
+            
+        </div>
+    </div>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <script>alert(`{{message}}`)</script>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+<script src="{{ url_for('static', filename='retrieve_script.js') }}"></script>
+</body>
+</html>

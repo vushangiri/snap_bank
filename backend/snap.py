@@ -113,6 +113,10 @@ def receive_image(image):
 def face():
     return render_template("face.html")
 
+@app.route("/retrieve")
+def retrieve():
+    return render_template("retrieve.html")
+
 @app.route("/upload")
 def upload():
     return render_template("upload.html")
