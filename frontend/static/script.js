@@ -1,7 +1,7 @@
 document.getElementById('retrieveImages').addEventListener('click', () => {
-    window.location = 'http://localhost:5000/retrieve'
+    window.location = window.location.href + 'retrieve'
 })
 
 document.getElementById('uploadImages').addEventListener('click', () => {
-    window.location = 'http://localhost:5000/upload'
+    window.location = window.location.href + 'upload'
 })

@@ -6,7 +6,6 @@ from flask import Flask, render_template, send_from_directory, request, redirect
 from werkzeug.utils import secure_filename
 from flask_socketio import SocketIO, emit
 import face_recognition
-import numpy as np
 
 app = Flask(__name__, template_folder="../frontend/templates", static_folder="../frontend/static")
 app.config["SECRET_KEY"] = "secret!"
@@ -152,4 +151,7 @@ def upload_images():
 
 if __name__ == "__main__":
     socketio.run(app, debug=True, port=5000, host='0.0.0.0')
+    app.jinja_env.auto_reload = True
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
+    app.run(debug=True, host='0.0.0.0')
     

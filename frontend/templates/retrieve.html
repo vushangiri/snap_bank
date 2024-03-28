@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='retrieve_styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
+/>
+
     <title>Retrieve Images</title>
 </head>
 <body>
@@ -30,10 +36,46 @@
                 </div>
             </div>
             <br>
+            <br>
+            <div class="image-container">
+                <a
+                    data-fancybox="gallery"
+                    href="{{ url_for('static', filename='images/haku.jpg') }}"
+                >
+                    <img class="image-card" src="{{ url_for('static', filename='images/haku.jpg') }}" alt="" />
+                </a> 
+                <a
+                    data-fancybox="gallery"
+                    href="{{ url_for('static', filename='images/haku.jpg') }}"
+                >
+                    <img class="image-card" src="{{ url_for('static', filename='images/haku.jpg') }}" alt="" />
+                </a> 
+                <a
+                    data-fancybox="gallery"
+                    href="{{ url_for('static', filename='images/haku.jpg') }}"
+                >
+                    <img class="image-card" src="{{ url_for('static', filename='images/haku.jpg') }}" alt="" />
+                </a> 
+                <a
+                    data-fancybox="gallery"
+                    href="{{ url_for('static', filename='images/haku.jpg') }}"
+                >
+                    <img class="image-card" src="{{ url_for('static', filename='images/haku.jpg') }}" alt="" />
+                </a> 
+                <a
+                    data-fancybox="gallery"
+                    href="{{ url_for('static', filename='images/haku.jpg') }}"
+                >
+                    <img class="image-card" src="{{ url_for('static', filename='images/haku.jpg') }}" alt="" />
+                </a>                 
+            </div>
+            
+            
             
             
         </div>
     </div>
+    
     {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
@@ -41,6 +83,8 @@
         {% endfor %}
     {% endif %}
     {% endwith %}
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 <script src="{{ url_for('static', filename='retrieve_script.js') }}"></script>
 </body>
 </html>
