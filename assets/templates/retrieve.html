@@ -28,6 +28,12 @@
 
                     <br>
                     <br>
+                    <div id="container">
+                        <video autoplay playsinline id="videoElement" ></video>
+                        <canvas id="canvas" width="300" height="600"></canvas>
+                    </div>
+                    <br>
+                    <br>
                     <div class="wrapper">
                         <button type="submit" id="retrieveImages" class="file-retrieve"> Scan &nbsp;&nbsp;<i class="fa-solid fa-expand"></i></button>
                         
@@ -37,37 +43,14 @@
             </div>
             <br>
             <br>
-            <div class="image-container">
-                <a
+            <div class="image-container" id="retrieve_images_server">
+                <!-- <a
                     data-fancybox="gallery"
-                    href="{{ url_for('static', filename='images/haku.jpg') }}"
+                    href="{{ url_for('static', filename='images/1.jpg') }}"
                 >
-                    <img class="image-card" src="{{ url_for('static', filename='images/haku.jpg') }}" alt="" />
-                </a> 
-                <a
-                    data-fancybox="gallery"
-                    href="{{ url_for('static', filename='images/haku.jpg') }}"
-                >
-                    <img class="image-card" src="{{ url_for('static', filename='images/haku.jpg') }}" alt="" />
-                </a> 
-                <a
-                    data-fancybox="gallery"
-                    href="{{ url_for('static', filename='images/haku.jpg') }}"
-                >
-                    <img class="image-card" src="{{ url_for('static', filename='images/haku.jpg') }}" alt="" />
-                </a> 
-                <a
-                    data-fancybox="gallery"
-                    href="{{ url_for('static', filename='images/haku.jpg') }}"
-                >
-                    <img class="image-card" src="{{ url_for('static', filename='images/haku.jpg') }}" alt="" />
-                </a> 
-                <a
-                    data-fancybox="gallery"
-                    href="{{ url_for('static', filename='images/haku.jpg') }}"
-                >
-                    <img class="image-card" src="{{ url_for('static', filename='images/haku.jpg') }}" alt="" />
-                </a>                 
+                    <img class="image-card" src="{{ url_for('static', filename='images/1.jpg') }}" alt="" />
+                </a>  -->
+                               
             </div>
             
             
@@ -85,6 +68,8 @@
     {% endwith %}
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.4/socket.io.js"></script>
 <script src="{{ url_for('static', filename='retrieve_script.js') }}"></script>
 </body>
 </html>
