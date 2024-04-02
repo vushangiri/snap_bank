@@ -1,4 +1,4 @@
 snap_venv/
-frontend/static/images/*
+assets/static/images/*
 tests/
 tests/*
